@@ -1,0 +1,504 @@
+check：60
+100%|██████████| 938/938 [01:16<00:00, 12.32it/s]
+Valid loss: 0.337, accuracy 0.643, top k accuracy: [0.8519432  0.92373842 0.98040131]
+Cost time:  79.11116409301758
+100%|██████████| 938/938 [01:16<00:00, 12.28it/s]
+Valid loss: 0.348, accuracy 0.652, top k accuracy: [0.84767682 0.92320512 0.97833478]
+Cost time:  76.84433960914612
+Instance   0 | GNN  nb nodes     815  | GNN  time    16.10
+Instance   1 | GNN  nb nodes      91  | GNN  time     4.60
+Instance   2 | GNN  nb nodes     321  | GNN  time     9.32
+Instance   3 | GNN  nb nodes      95  | GNN  time     4.96
+Instance   4 | GNN  nb nodes    1534  | GNN  time    26.89
+Instance   5 | GNN  nb nodes     225  | GNN  time     6.99
+Instance   6 | GNN  nb nodes     498  | GNN  time    10.04
+Instance   7 | GNN  nb nodes     649  | GNN  time    13.55
+Instance   8 | GNN  nb nodes      23  | GNN  time     4.99
+Instance   9 | GNN  nb nodes      95  | GNN  time     3.75
+Instance  10 | GNN  nb nodes     157  | GNN  time     6.89
+Instance  11 | GNN  nb nodes     373  | GNN  time     7.97
+Instance  12 | GNN  nb nodes    3199  | GNN  time    38.68
+Instance  13 | GNN  nb nodes     171  | GNN  time     7.09
+Instance  14 | GNN  nb nodes     267  | GNN  time     8.06
+Instance  15 | GNN  nb nodes     187  | GNN  time     5.08
+Instance  16 | GNN  nb nodes     765  | GNN  time    15.93
+Instance  17 | GNN  nb nodes     483  | GNN  time     9.74
+Instance  18 | GNN  nb nodes     641  | GNN  time    11.19
+Instance  19 | GNN  nb nodes      57  | GNN  time     4.03
+Instance  20 | GNN  nb nodes     169  | GNN  time     5.28
+Instance  21 | GNN  nb nodes     219  | GNN  time     8.81
+Instance  22 | GNN  nb nodes     106  | GNN  time     4.33
+Instance  23 | GNN  nb nodes     161  | GNN  time     6.56
+Instance  24 | GNN  nb nodes      19  | GNN  time     4.59
+Instance  25 | GNN  nb nodes      85  | GNN  time     4.51
+Instance  26 | GNN  nb nodes     151  | GNN  time     4.55
+Instance  27 | GNN  nb nodes     415  | GNN  time     8.93
+Instance  28 | GNN  nb nodes    1167  | GNN  time    22.49
+Instance  29 | GNN  nb nodes     547  | GNN  time    14.24
+Instance  30 | GNN  nb nodes     609  | GNN  time    10.83
+Instance  31 | GNN  nb nodes      19  | GNN  time     3.77
+Instance  32 | GNN  nb nodes     382  | GNN  time     7.70
+Instance  33 | GNN  nb nodes     217  | GNN  time     6.85
+Instance  34 | GNN  nb nodes      31  | GNN  time     2.89
+Instance  35 | GNN  nb nodes     974  | GNN  time    19.82
+Instance  36 | GNN  nb nodes     579  | GNN  time     9.95
+Instance  37 | GNN  nb nodes     345  | GNN  time     7.11
+Instance  38 | GNN  nb nodes      38  | GNN  time     3.21
+Instance  39 | GNN  nb nodes     553  | GNN  time    10.30
+Instance  40 | GNN  nb nodes      73  | GNN  time     5.21
+Instance  41 | GNN  nb nodes     179  | GNN  time     6.93
+Instance  42 | GNN  nb nodes     381  | GNN  time     8.19
+Instance  43 | GNN  nb nodes     989  | GNN  time    16.50
+Instance  44 | GNN  nb nodes     109  | GNN  time     5.23
+Instance  45 | GNN  nb nodes     833  | GNN  time    15.31
+Instance  46 | GNN  nb nodes     691  | GNN  time    11.39
+Instance  47 | GNN  nb nodes      52  | GNN  time     2.98
+Instance  48 | GNN  nb nodes     385  | GNN  time     8.52
+Instance  49 | GNN  nb nodes      39  | GNN  time     2.79
+matrix: time:9.312226096439998, node:423.26
+Instance   0 | GNN  nb nodes     817  | GNN  time    16.38
+Instance   1 | GNN  nb nodes      87  | GNN  time     4.61
+Instance   2 | GNN  nb nodes     323  | GNN  time     8.95
+Instance   3 | GNN  nb nodes      89  | GNN  time     5.31
+Instance   4 | GNN  nb nodes    1879  | GNN  time    30.29
+Instance   5 | GNN  nb nodes     229  | GNN  time     8.09
+Instance   6 | GNN  nb nodes     484  | GNN  time    10.81
+Instance   7 | GNN  nb nodes     631  | GNN  time    15.77
+Instance   8 | GNN  nb nodes      21  | GNN  time     3.86
+Instance   9 | GNN  nb nodes      83  | GNN  time     3.14
+Instance  10 | GNN  nb nodes     141  | GNN  time     6.61
+Instance  11 | GNN  nb nodes     336  | GNN  time     7.79
+Instance  12 | GNN  nb nodes    3011  | GNN  time    34.57
+Instance  13 | GNN  nb nodes     147  | GNN  time     7.57
+Instance  14 | GNN  nb nodes     275  | GNN  time     7.60
+Instance  15 | GNN  nb nodes     201  | GNN  time     5.28
+Instance  16 | GNN  nb nodes     702  | GNN  time    14.49
+Instance  17 | GNN  nb nodes     477  | GNN  time    10.42
+Instance  18 | GNN  nb nodes     615  | GNN  time    11.37
+Instance  19 | GNN  nb nodes      53  | GNN  time     3.97
+Instance  20 | GNN  nb nodes     181  | GNN  time     5.89
+Instance  21 | GNN  nb nodes     235  | GNN  time     9.91
+Instance  22 | GNN  nb nodes      87  | GNN  time     4.79
+Instance  23 | GNN  nb nodes     179  | GNN  time     5.89
+Instance  24 | GNN  nb nodes      19  | GNN  time     6.43
+Instance  25 | GNN  nb nodes      87  | GNN  time     5.17
+Instance  26 | GNN  nb nodes     157  | GNN  time     4.88
+Instance  27 | GNN  nb nodes     459  | GNN  time     9.43
+Instance  28 | GNN  nb nodes    1157  | GNN  time    22.45
+Instance  29 | GNN  nb nodes     493  | GNN  time    13.31
+Instance  30 | GNN  nb nodes     614  | GNN  time    10.37
+Instance  31 | GNN  nb nodes      19  | GNN  time     3.75
+Instance  32 | GNN  nb nodes     325  | GNN  time     7.07
+Instance  33 | GNN  nb nodes     214  | GNN  time     6.27
+Instance  34 | GNN  nb nodes      31  | GNN  time     2.26
+Instance  35 | GNN  nb nodes     980  | GNN  time    20.60
+Instance  36 | GNN  nb nodes     599  | GNN  time    10.78
+Instance  37 | GNN  nb nodes     309  | GNN  time     6.91
+Instance  38 | GNN  nb nodes      31  | GNN  time     3.18
+Instance  39 | GNN  nb nodes     563  | GNN  time    10.42
+Instance  40 | GNN  nb nodes      77  | GNN  time     5.25
+Instance  41 | GNN  nb nodes     167  | GNN  time     7.21
+Instance  42 | GNN  nb nodes     375  | GNN  time     9.77
+Instance  43 | GNN  nb nodes     965  | GNN  time    15.68
+Instance  44 | GNN  nb nodes     111  | GNN  time     5.58
+Instance  45 | GNN  nb nodes     819  | GNN  time    16.25
+Instance  46 | GNN  nb nodes     729  | GNN  time    10.96
+Instance  47 | GNN  nb nodes      69  | GNN  time     2.92
+Instance  48 | GNN  nb nodes     348  | GNN  time     7.84
+Instance  49 | GNN  nb nodes      53  | GNN  time     3.17
+Gasse: time:9.425603204700003, node:421.06
+Instance   0 | SCIP  nb nodes    1367  | SCIP  time    23.67
+Instance   1 | SCIP  nb nodes      19  | SCIP  time     8.58
+Instance   2 | SCIP  nb nodes     185  | SCIP  time    14.79
+Instance   3 | SCIP  nb nodes      33  | SCIP  time     8.73
+Instance   4 | SCIP  nb nodes    2066  | SCIP  time    32.26
+Instance   5 | SCIP  nb nodes      95  | SCIP  time     8.86
+Instance   6 | SCIP  nb nodes     479  | SCIP  time    13.36
+Instance   7 | SCIP  nb nodes     827  | SCIP  time    18.40
+Instance   8 | SCIP  nb nodes       1  | SCIP  time     4.64
+Instance   9 | SCIP  nb nodes      33  | SCIP  time     4.58
+Instance  10 | SCIP  nb nodes      27  | SCIP  time    10.14
+Instance  11 | SCIP  nb nodes     209  | SCIP  time     9.71
+Instance  12 | SCIP  nb nodes    5315  | SCIP  time    35.57
+Instance  13 | SCIP  nb nodes      78  | SCIP  time    10.18
+Instance  14 | SCIP  nb nodes     167  | SCIP  time     9.24
+Instance  15 | SCIP  nb nodes      97  | SCIP  time     6.06
+Instance  16 | SCIP  nb nodes    1038  | SCIP  time    17.45
+Instance  17 | SCIP  nb nodes     407  | SCIP  time    12.65
+Instance  18 | SCIP  nb nodes     777  | SCIP  time    13.87
+Instance  19 | SCIP  nb nodes      17  | SCIP  time     5.65
+Instance  20 | SCIP  nb nodes      67  | SCIP  time     7.49
+Instance  21 | SCIP  nb nodes     131  | SCIP  time    12.47
+Instance  22 | SCIP  nb nodes      31  | SCIP  time     5.44
+Instance  23 | SCIP  nb nodes      55  | SCIP  time     8.25
+Instance  24 | SCIP  nb nodes       5  | SCIP  time     5.49
+Instance  25 | SCIP  nb nodes      21  | SCIP  time     6.82
+Instance  26 | SCIP  nb nodes      91  | SCIP  time     7.03
+Instance  27 | SCIP  nb nodes     513  | SCIP  time    12.18
+Instance  28 | SCIP  nb nodes    1259  | SCIP  time    20.77
+Instance  29 | SCIP  nb nodes     509  | SCIP  time    17.61
+Instance  30 | SCIP  nb nodes     544  | SCIP  time    11.83
+Instance  31 | SCIP  nb nodes       3  | SCIP  time     4.48
+Instance  32 | SCIP  nb nodes     293  | SCIP  time     9.40
+Instance  33 | SCIP  nb nodes     159  | SCIP  time     9.98
+Instance  34 | SCIP  nb nodes       3  | SCIP  time     2.79
+Instance  35 | SCIP  nb nodes    1278  | SCIP  time    24.29
+Instance  36 | SCIP  nb nodes     513  | SCIP  time    12.22
+Instance  37 | SCIP  nb nodes     270  | SCIP  time     9.07
+Instance  38 | SCIP  nb nodes       7  | SCIP  time     4.11
+Instance  39 | SCIP  nb nodes     529  | SCIP  time    13.17
+Instance  40 | SCIP  nb nodes      15  | SCIP  time     7.97
+Instance  41 | SCIP  nb nodes      81  | SCIP  time     9.36
+Instance  42 | SCIP  nb nodes     279  | SCIP  time     9.84
+Instance  43 | SCIP  nb nodes     949  | SCIP  time    16.85
+Instance  44 | SCIP  nb nodes      61  | SCIP  time     8.52
+Instance  45 | SCIP  nb nodes     929  | SCIP  time    18.81
+Instance  46 | SCIP  nb nodes     891  | SCIP  time    12.73
+Instance  47 | SCIP  nb nodes       9  | SCIP  time     3.37
+Instance  48 | SCIP  nb nodes     465  | SCIP  time    11.98
+Instance  49 | SCIP  nb nodes       9  | SCIP  time     3.73
+SCIP: time:11.52962354346, node:464.12
+matrix: time:9.312226096439998, node:423.26
+Gasse: time:9.425603204700003, node:421.06
+SCIP: time:11.52962354346, node:464.12
+[815.0, 91.0, 321.0, 95.0, 1534.0, 225.0, 498.0, 649.0, 23.0, 95.0, 157.0, 373.0, 3199.0, 171.0, 267.0, 187.0, 765.0, 483.0, 641.0, 57.0, 169.0, 219.0, 106.0, 161.0, 19.0, 85.0, 151.0, 415.0, 1167.0, 547.0, 609.0, 19.0, 382.0, 217.0, 31.0, 974.0, 579.0, 345.0, 38.0, 553.0, 73.0, 179.0, 381.0, 989.0, 109.0, 833.0, 691.0, 52.0, 385.0, 39.0]
+[817.0, 87.0, 323.0, 89.0, 1879.0, 229.0, 484.0, 631.0, 21.0, 83.0, 141.0, 336.0, 3011.0, 147.0, 275.0, 201.0, 702.0, 477.0, 615.0, 53.0, 181.0, 235.0, 87.0, 179.0, 19.0, 87.0, 157.0, 459.0, 1157.0, 493.0, 614.0, 19.0, 325.0, 214.0, 31.0, 980.0, 599.0, 309.0, 31.0, 563.0, 77.0, 167.0, 375.0, 965.0, 111.0, 819.0, 729.0, 69.0, 348.0, 53.0]
+[1367.0, 19.0, 185.0, 33.0, 2066.0, 95.0, 479.0, 827.0, 1.0, 33.0, 27.0, 209.0, 5315.0, 78.0, 167.0, 97.0, 1038.0, 407.0, 777.0, 17.0, 67.0, 131.0, 31.0, 55.0, 5.0, 21.0, 91.0, 513.0, 1259.0, 509.0, 544.0, 3.0, 293.0, 159.0, 3.0, 1278.0, 513.0, 270.0, 7.0, 529.0, 15.0, 81.0, 279.0, 949.0, 61.0, 929.0, 891.0, 9.0, 465.0, 9.0]
+[16.098374511, 4.602923831999999, 9.320459887999998, 4.958240967000001, 26.891467189, 6.9921152200000005, 10.038300764000004, 13.548913233000006, 4.985062211000001, 3.752841214999997, 6.887511089999996, 7.969321002000001, 38.67679056499994, 7.089742670999999, 8.056401828000002, 5.075051103, 15.934329240999995, 9.735291956999994, 11.18739584, 4.028820348999999, 5.277960310000001, 8.808881699999995, 4.332152800999997, 6.559220534000006, 4.5922954, 4.511619236, 4.550096046999998, 8.930455409000011, 22.492174168000027, 14.239101610000004, 10.82960419099999, 3.7713394500000006, 7.702984813000003, 6.845300263000001, 2.889584099000001, 19.821926295000004, 9.947761101, 7.11457355, 3.2148227949999995, 10.3018778, 5.212242489, 6.931214801999997, 8.186160543999998, 16.504776636000003, 5.227147328999997, 15.314996133000005, 11.390908539999993, 2.9788582089999998, 8.515440491, 2.7864734010000003]
+[16.37699901199999, 4.613171981999998, 8.947625097000007, 5.310445661999999, 30.294922220000004, 8.090073227000001, 10.812824891000012, 15.769051937, 3.86038006, 3.1439429420000016, 6.608313456, 7.791553687000001, 34.57386827400008, 7.572317735000002, 7.5965127149999985, 5.278933642000003, 14.492716736999991, 10.424502349000003, 11.37235259299999, 3.9654938869999996, 5.894309722000005, 9.907814385999997, 4.788051232000002, 5.886110655000001, 6.428299859999999, 5.1712451759999984, 4.8784563730000015, 9.427824188999999, 22.449482292, 13.309436944, 10.370109170999996, 3.7540043199999995, 7.071351219000002, 6.266552343999999, 2.2646764679999998, 20.597972750000018, 10.779358405000004, 6.913230606000002, 3.1760085659999997, 10.415079502999996, 5.248352312999999, 7.213473932000001, 9.77476130900001, 15.680073418000001, 5.577878252000001, 16.248045273000006, 10.964838024000004, 2.9208218949999996, 7.838574867000004, 3.1679646660000005]
+[23.672284113, 8.577501842, 14.793694649, 8.734915871, 32.259735221, 8.857286524, 13.363125507, 18.403777432, 4.640278441, 4.579458674, 10.144074982, 9.706623062, 35.572135608, 10.18245627, 9.235719486, 6.06059721, 17.454577554, 12.649636229, 13.865372474, 5.648231306, 7.494161147, 12.466069576, 5.437027893, 8.254732446, 5.48933675, 6.818904646, 7.032623228, 12.177282436, 20.769774485, 17.611171626, 11.829051339, 4.477695287, 9.404960998, 9.982661503, 2.792422144, 24.291980771, 12.219702837, 9.073726773, 4.110494485, 13.170511708, 7.972721898, 9.364164408, 9.83927992, 16.850170628, 8.522247772, 18.810418722, 12.731519196, 3.3710732, 11.981545734, 3.732261162]
+
+
+check 154
+
+/home/kevin/anaconda3/bin/python /home/kevin/PycharmProjects/Learn2bb_ecole/test_imitation.py
+100%|██████████| 938/938 [01:16<00:00, 12.23it/s]
+Valid loss: 0.337, accuracy 0.643, top k accuracy: [0.8519432  0.92373842 0.98040131]
+Cost time:  79.73545289039612
+100%|██████████| 938/938 [01:14<00:00, 12.51it/s]
+Valid loss: 0.314, accuracy 0.640, top k accuracy: [0.85374308 0.92440504 0.98133458]
+Cost time:  75.44921398162842
+Instance   0 | GNN  nb nodes       7  | GNN  time     3.12
+Instance   1 | GNN  nb nodes      15  | GNN  time     1.74
+Instance   2 | GNN  nb nodes      41  | GNN  time     1.68
+Instance   3 | GNN  nb nodes      11  | GNN  time     1.46
+Instance   4 | GNN  nb nodes      37  | GNN  time     2.18
+Instance   5 | GNN  nb nodes      47  | GNN  time     2.42
+Instance   6 | GNN  nb nodes       1  | GNN  time     1.51
+Instance   7 | GNN  nb nodes      21  | GNN  time     2.42
+Instance   8 | GNN  nb nodes      14  | GNN  time     1.06
+Instance   9 | GNN  nb nodes       9  | GNN  time     1.30
+Instance  10 | GNN  nb nodes     112  | GNN  time     2.98
+Instance  11 | GNN  nb nodes      53  | GNN  time     1.86
+Instance  12 | GNN  nb nodes      73  | GNN  time     2.63
+Instance  13 | GNN  nb nodes      11  | GNN  time     1.71
+Instance  14 | GNN  nb nodes       4  | GNN  time     1.78
+Instance  15 | GNN  nb nodes     127  | GNN  time     3.19
+Instance  16 | GNN  nb nodes      13  | GNN  time     1.40
+Instance  17 | GNN  nb nodes      65  | GNN  time     2.53
+Instance  18 | GNN  nb nodes       1  | GNN  time     0.39
+Instance  19 | GNN  nb nodes      35  | GNN  time     2.11
+Instance  20 | GNN  nb nodes      15  | GNN  time     1.68
+Instance  21 | GNN  nb nodes     105  | GNN  time     2.78
+Instance  22 | GNN  nb nodes      37  | GNN  time     3.36
+Instance  23 | GNN  nb nodes     197  | GNN  time     3.36
+Instance  24 | GNN  nb nodes      11  | GNN  time     2.29
+Instance  25 | GNN  nb nodes       1  | GNN  time     1.70
+Instance  26 | GNN  nb nodes      35  | GNN  time     2.05
+Instance  27 | GNN  nb nodes      19  | GNN  time     2.68
+Instance  28 | GNN  nb nodes       5  | GNN  time     1.24
+Instance  29 | GNN  nb nodes      17  | GNN  time     1.78
+Instance  30 | GNN  nb nodes      39  | GNN  time     1.85
+Instance  31 | GNN  nb nodes      27  | GNN  time     2.05
+Instance  32 | GNN  nb nodes      11  | GNN  time     1.73
+Instance  33 | GNN  nb nodes     163  | GNN  time     3.65
+Instance  34 | GNN  nb nodes      29  | GNN  time     2.13
+Instance  35 | GNN  nb nodes      43  | GNN  time     1.29
+Instance  36 | GNN  nb nodes       1  | GNN  time     1.82
+Instance  37 | GNN  nb nodes      11  | GNN  time     1.30
+Instance  38 | GNN  nb nodes      53  | GNN  time     2.16
+Instance  39 | GNN  nb nodes      96  | GNN  time     3.85
+Instance  40 | GNN  nb nodes      55  | GNN  time     1.99
+Instance  41 | GNN  nb nodes       1  | GNN  time     0.26
+Instance  42 | GNN  nb nodes      13  | GNN  time     2.19
+Instance  43 | GNN  nb nodes       9  | GNN  time     1.72
+Instance  44 | GNN  nb nodes      11  | GNN  time     1.62
+Instance  45 | GNN  nb nodes      11  | GNN  time     0.89
+Instance  46 | GNN  nb nodes      21  | GNN  time     1.64
+Instance  47 | GNN  nb nodes     222  | GNN  time     4.90
+Instance  48 | GNN  nb nodes      27  | GNN  time     2.06
+Instance  49 | GNN  nb nodes      31  | GNN  time     2.65
+matrix: time:2.0826839565400004, node:40.26
+Instance   0 | GNN  nb nodes       9  | GNN  time     2.46
+Instance   1 | GNN  nb nodes      25  | GNN  time     2.09
+Instance   2 | GNN  nb nodes      33  | GNN  time     1.63
+Instance   3 | GNN  nb nodes      21  | GNN  time     1.43
+Instance   4 | GNN  nb nodes      37  | GNN  time     2.08
+Instance   5 | GNN  nb nodes      49  | GNN  time     2.28
+Instance   6 | GNN  nb nodes       1  | GNN  time     1.31
+Instance   7 | GNN  nb nodes      27  | GNN  time     2.02
+Instance   8 | GNN  nb nodes      14  | GNN  time     1.18
+Instance   9 | GNN  nb nodes       9  | GNN  time     1.24
+Instance  10 | GNN  nb nodes     110  | GNN  time     3.03
+Instance  11 | GNN  nb nodes      53  | GNN  time     1.89
+Instance  12 | GNN  nb nodes      67  | GNN  time     2.70
+Instance  13 | GNN  nb nodes      12  | GNN  time     1.72
+Instance  14 | GNN  nb nodes       4  | GNN  time     1.90
+Instance  15 | GNN  nb nodes     135  | GNN  time     3.37
+Instance  16 | GNN  nb nodes      16  | GNN  time     1.47
+Instance  17 | GNN  nb nodes      61  | GNN  time     2.19
+Instance  18 | GNN  nb nodes       1  | GNN  time     0.56
+Instance  19 | GNN  nb nodes      33  | GNN  time     2.30
+Instance  20 | GNN  nb nodes      15  | GNN  time     1.98
+Instance  21 | GNN  nb nodes     111  | GNN  time     3.13
+Instance  22 | GNN  nb nodes      33  | GNN  time     3.69
+Instance  23 | GNN  nb nodes     183  | GNN  time     3.65
+Instance  24 | GNN  nb nodes      11  | GNN  time     2.35
+Instance  25 | GNN  nb nodes       1  | GNN  time     1.74
+Instance  26 | GNN  nb nodes      31  | GNN  time     1.70
+Instance  27 | GNN  nb nodes      19  | GNN  time     2.18
+Instance  28 | GNN  nb nodes       5  | GNN  time     1.06
+Instance  29 | GNN  nb nodes      17  | GNN  time     1.86
+Instance  30 | GNN  nb nodes      37  | GNN  time     1.97
+Instance  31 | GNN  nb nodes      25  | GNN  time     2.19
+Instance  32 | GNN  nb nodes       9  | GNN  time     1.84
+Instance  33 | GNN  nb nodes     159  | GNN  time     4.26
+Instance  34 | GNN  nb nodes      29  | GNN  time     2.64
+Instance  35 | GNN  nb nodes      41  | GNN  time     1.37
+Instance  36 | GNN  nb nodes       1  | GNN  time     1.98
+Instance  37 | GNN  nb nodes      11  | GNN  time     1.35
+Instance  38 | GNN  nb nodes      41  | GNN  time     2.24
+Instance  39 | GNN  nb nodes      80  | GNN  time     3.69
+Instance  40 | GNN  nb nodes      53  | GNN  time     2.21
+Instance  41 | GNN  nb nodes       1  | GNN  time     0.29
+Instance  42 | GNN  nb nodes      15  | GNN  time     2.04
+Instance  43 | GNN  nb nodes       9  | GNN  time     1.69
+Instance  44 | GNN  nb nodes       9  | GNN  time     1.99
+Instance  45 | GNN  nb nodes      11  | GNN  time     0.89
+Instance  46 | GNN  nb nodes      21  | GNN  time     1.58
+Instance  47 | GNN  nb nodes     257  | GNN  time     5.14
+Instance  48 | GNN  nb nodes      29  | GNN  time     2.36
+Instance  49 | GNN  nb nodes      27  | GNN  time     2.69
+Gasse: time:2.13181727046, node:40.16
+Instance   0 | SCIP  nb nodes       1  | SCIP  time     2.51
+Instance   1 | SCIP  nb nodes       3  | SCIP  time     2.31
+Instance   2 | SCIP  nb nodes       5  | SCIP  time     1.81
+Instance   3 | SCIP  nb nodes       3  | SCIP  time     1.55
+Instance   4 | SCIP  nb nodes       5  | SCIP  time     3.27
+Instance   5 | SCIP  nb nodes       5  | SCIP  time     2.89
+Instance   6 | SCIP  nb nodes       1  | SCIP  time     1.33
+Instance   7 | SCIP  nb nodes       3  | SCIP  time     2.28
+Instance   8 | SCIP  nb nodes       3  | SCIP  time     1.51
+Instance   9 | SCIP  nb nodes       1  | SCIP  time     1.84
+Instance  10 | SCIP  nb nodes      37  | SCIP  time     5.70
+Instance  11 | SCIP  nb nodes      13  | SCIP  time     2.85
+Instance  12 | SCIP  nb nodes      11  | SCIP  time     3.37
+Instance  13 | SCIP  nb nodes       1  | SCIP  time     2.00
+Instance  14 | SCIP  nb nodes       1  | SCIP  time     2.07
+Instance  15 | SCIP  nb nodes      35  | SCIP  time     4.53
+Instance  16 | SCIP  nb nodes       3  | SCIP  time     1.99
+Instance  17 | SCIP  nb nodes      13  | SCIP  time     3.39
+Instance  18 | SCIP  nb nodes       1  | SCIP  time     0.46
+Instance  19 | SCIP  nb nodes       7  | SCIP  time     2.70
+Instance  20 | SCIP  nb nodes       5  | SCIP  time     2.85
+Instance  21 | SCIP  nb nodes      39  | SCIP  time     3.84
+Instance  22 | SCIP  nb nodes       3  | SCIP  time     4.02
+Instance  23 | SCIP  nb nodes      59  | SCIP  time     4.23
+Instance  24 | SCIP  nb nodes       1  | SCIP  time     2.56
+Instance  25 | SCIP  nb nodes       1  | SCIP  time     1.71
+Instance  26 | SCIP  nb nodes       5  | SCIP  time     2.29
+Instance  27 | SCIP  nb nodes       3  | SCIP  time     2.50
+Instance  28 | SCIP  nb nodes       1  | SCIP  time     1.04
+Instance  29 | SCIP  nb nodes       3  | SCIP  time     2.04
+Instance  30 | SCIP  nb nodes       7  | SCIP  time     2.38
+Instance  31 | SCIP  nb nodes       3  | SCIP  time     2.76
+Instance  32 | SCIP  nb nodes       1  | SCIP  time     1.84
+Instance  33 | SCIP  nb nodes      73  | SCIP  time     5.90
+Instance  34 | SCIP  nb nodes       5  | SCIP  time     2.96
+Instance  35 | SCIP  nb nodes       7  | SCIP  time     1.77
+Instance  36 | SCIP  nb nodes       1  | SCIP  time     1.91
+Instance  37 | SCIP  nb nodes       1  | SCIP  time     1.43
+Instance  38 | SCIP  nb nodes       9  | SCIP  time     2.83
+Instance  39 | SCIP  nb nodes      17  | SCIP  time     5.01
+Instance  40 | SCIP  nb nodes       7  | SCIP  time     2.51
+Instance  41 | SCIP  nb nodes       1  | SCIP  time     0.26
+Instance  42 | SCIP  nb nodes       1  | SCIP  time     2.20
+Instance  43 | SCIP  nb nodes       1  | SCIP  time     1.92
+Instance  44 | SCIP  nb nodes       1  | SCIP  time     1.96
+Instance  45 | SCIP  nb nodes       1  | SCIP  time     0.83
+Instance  46 | SCIP  nb nodes       3  | SCIP  time     2.03
+Instance  47 | SCIP  nb nodes     137  | SCIP  time     5.60
+Instance  48 | SCIP  nb nodes       5  | SCIP  time     2.93
+Instance  49 | SCIP  nb nodes       5  | SCIP  time     3.08
+SCIP: time:2.59146120864, node:11.16
+matrix: time:2.0826839565400004, node:40.26
+Gasse: time:2.13181727046, node:40.16
+SCIP: time:2.59146120864, node:11.16
+[7.0, 15.0, 41.0, 11.0, 37.0, 47.0, 1.0, 21.0, 14.0, 9.0, 112.0, 53.0, 73.0, 11.0, 4.0, 127.0, 13.0, 65.0, 1.0, 35.0, 15.0, 105.0, 37.0, 197.0, 11.0, 1.0, 35.0, 19.0, 5.0, 17.0, 39.0, 27.0, 11.0, 163.0, 29.0, 43.0, 1.0, 11.0, 53.0, 96.0, 55.0, 1.0, 13.0, 9.0, 11.0, 11.0, 21.0, 222.0, 27.0, 31.0]
+[9.0, 25.0, 33.0, 21.0, 37.0, 49.0, 1.0, 27.0, 14.0, 9.0, 110.0, 53.0, 67.0, 12.0, 4.0, 135.0, 16.0, 61.0, 1.0, 33.0, 15.0, 111.0, 33.0, 183.0, 11.0, 1.0, 31.0, 19.0, 5.0, 17.0, 37.0, 25.0, 9.0, 159.0, 29.0, 41.0, 1.0, 11.0, 41.0, 80.0, 53.0, 1.0, 15.0, 9.0, 9.0, 11.0, 21.0, 257.0, 29.0, 27.0]
+[1.0, 3.0, 5.0, 3.0, 5.0, 5.0, 1.0, 3.0, 3.0, 1.0, 37.0, 13.0, 11.0, 1.0, 1.0, 35.0, 3.0, 13.0, 1.0, 7.0, 5.0, 39.0, 3.0, 59.0, 1.0, 1.0, 5.0, 3.0, 1.0, 3.0, 7.0, 3.0, 1.0, 73.0, 5.0, 7.0, 1.0, 1.0, 9.0, 17.0, 7.0, 1.0, 1.0, 1.0, 1.0, 1.0, 3.0, 137.0, 5.0, 5.0]
+[3.122060257, 1.74170593, 1.6786696119999995, 1.4575756770000001, 2.176197917, 2.419126931, 1.509831128, 2.419827112, 1.063167429, 1.296461229, 2.975492919000002, 1.8613905309999998, 2.632523168, 1.7116248029999999, 1.777196163, 3.1923891689999997, 1.3966140349999998, 2.5296388889999997, 0.394772312, 2.1087673429999994, 1.68118773, 2.781115513000002, 3.36151734, 3.3562141319999985, 2.293328378, 1.701620145, 2.047924705, 2.6828320609999996, 1.2378523300000002, 1.7818074819999998, 1.8461823329999996, 2.0545599230000002, 1.73251992, 3.6487804140000017, 2.134107263000001, 1.2922573039999998, 1.815346928, 1.30458833, 2.1557296470000007, 3.854949835999999, 1.9860467309999998, 0.258659544, 2.1863879159999997, 1.716373723, 1.6234285290000001, 0.885405851, 1.6362438329999998, 4.9002331299999975, 2.06218612, 2.6497781819999995]
+[2.4602328190000002, 2.09431606, 1.6309655239999998, 1.4325845810000004, 2.076853762, 2.2841430750000002, 1.312610081, 2.016021382, 1.1788750179999998, 1.243433169, 3.0258814230000004, 1.8947431880000005, 2.6975663190000003, 1.715128695, 1.895891643, 3.371778204, 1.4742881460000004, 2.189012811, 0.557969156, 2.304235762, 1.9793317859999997, 3.128477781000001, 3.6886816239999995, 3.645029348000001, 2.35376966, 1.737722195, 1.7007262920000001, 2.176345235, 1.060510537, 1.8584873370000001, 1.9666989710000002, 2.192906374, 1.8425883920000001, 4.261473862999999, 2.636861386, 1.3719787910000005, 1.976085187, 1.347928824, 2.2389991979999997, 3.687132418, 2.2131471819999993, 0.294095201, 2.0391914420000004, 1.6933967460000001, 1.988023204, 0.885498634, 1.5823900830000002, 5.139240622, 2.362089380000001, 2.6855250119999994]
+[2.511493355, 2.314124903, 1.806170928, 1.545907886, 3.270704419, 2.89257952, 1.334999828, 2.282602638, 1.506509252, 1.844681809, 5.699355086, 2.853675425, 3.369237925, 2.000805754, 2.074004629, 4.527316655, 1.989848802, 3.393722304, 0.456173687, 2.704994292, 2.845738015, 3.839178948, 4.02496486, 4.234028013, 2.560118063, 1.709930284, 2.294148195, 2.501385065, 1.042321501, 2.035045468, 2.375147977, 2.760917229, 1.841105061, 5.903626847, 2.959952129, 1.773491821, 1.909775087, 1.42649173, 2.834133854, 5.011498403, 2.505070693, 0.263303294, 2.198095174, 1.91617784, 1.964890793, 0.830753754, 2.034959936, 5.595437666, 2.92651645, 3.075947185]
+Instance   0 | GNN  nb nodes     803  | GNN  time    15.44
+Instance   1 | GNN  nb nodes      85  | GNN  time     4.57
+Instance   2 | GNN  nb nodes     316  | GNN  time     8.44
+Instance   3 | GNN  nb nodes      95  | GNN  time     4.97
+Instance   4 | GNN  nb nodes    1626  | GNN  time    29.00
+Instance   5 | GNN  nb nodes     221  | GNN  time     6.74
+Instance   6 | GNN  nb nodes     494  | GNN  time    10.77
+Instance   7 | GNN  nb nodes     661  | GNN  time    14.92
+Instance   8 | GNN  nb nodes      23  | GNN  time     3.79
+Instance   9 | GNN  nb nodes      72  | GNN  time     3.12
+Instance  10 | GNN  nb nodes     145  | GNN  time     6.87
+Instance  11 | GNN  nb nodes     332  | GNN  time     7.83
+Instance  12 | GNN  nb nodes    2973  | GNN  time    36.56
+Instance  13 | GNN  nb nodes     154  | GNN  time     7.07
+Instance  14 | GNN  nb nodes     277  | GNN  time     7.14
+Instance  15 | GNN  nb nodes     193  | GNN  time     4.56
+Instance  16 | GNN  nb nodes     694  | GNN  time    14.71
+Instance  17 | GNN  nb nodes     495  | GNN  time     9.62
+Instance  18 | GNN  nb nodes     657  | GNN  time    11.43
+Instance  19 | GNN  nb nodes      53  | GNN  time     4.00
+Instance  20 | GNN  nb nodes     173  | GNN  time     5.13
+Instance  21 | GNN  nb nodes     225  | GNN  time     9.00
+Instance  22 | GNN  nb nodes      87  | GNN  time     4.38
+Instance  23 | GNN  nb nodes     173  | GNN  time     6.00
+Instance  24 | GNN  nb nodes      19  | GNN  time     4.73
+Instance  25 | GNN  nb nodes      79  | GNN  time     4.41
+Instance  26 | GNN  nb nodes     147  | GNN  time     4.43
+Instance  27 | GNN  nb nodes     459  | GNN  time     9.32
+Instance  28 | GNN  nb nodes    1179  | GNN  time    21.00
+Instance  29 | GNN  nb nodes     507  | GNN  time    13.56
+Instance  30 | GNN  nb nodes     552  | GNN  time     9.42
+Instance  31 | GNN  nb nodes      21  | GNN  time     3.67
+Instance  32 | GNN  nb nodes     352  | GNN  time     7.74
+Instance  33 | GNN  nb nodes     218  | GNN  time     6.78
+Instance  34 | GNN  nb nodes      33  | GNN  time     2.51
+Instance  35 | GNN  nb nodes    1018  | GNN  time    19.73
+Instance  36 | GNN  nb nodes     577  | GNN  time    11.27
+Instance  37 | GNN  nb nodes     271  | GNN  time     6.68
+Instance  38 | GNN  nb nodes      31  | GNN  time     3.05
+Instance  39 | GNN  nb nodes     551  | GNN  time    10.68
+Instance  40 | GNN  nb nodes      74  | GNN  time     5.21
+Instance  41 | GNN  nb nodes     159  | GNN  time     6.36
+Instance  42 | GNN  nb nodes     391  | GNN  time     7.91
+Instance  43 | GNN  nb nodes     987  | GNN  time    16.90
+Instance  44 | GNN  nb nodes     107  | GNN  time     5.42
+Instance  45 | GNN  nb nodes     883  | GNN  time    16.86
+Instance  46 | GNN  nb nodes     687  | GNN  time    11.66
+Instance  47 | GNN  nb nodes      66  | GNN  time     3.29
+Instance  48 | GNN  nb nodes     356  | GNN  time     8.61
+Instance  49 | GNN  nb nodes      47  | GNN  time     3.51
+matrix: time:9.215332905540004, node:415.96
+Instance   0 | GNN  nb nodes     817  | GNN  time    16.60
+Instance   1 | GNN  nb nodes      87  | GNN  time     4.83
+Instance   2 | GNN  nb nodes     323  | GNN  time     9.66
+Instance   3 | GNN  nb nodes      89  | GNN  time     4.98
+Instance   4 | GNN  nb nodes    1879  | GNN  time    31.33
+Instance   5 | GNN  nb nodes     229  | GNN  time     7.18
+Instance   6 | GNN  nb nodes     484  | GNN  time    10.37
+Instance   7 | GNN  nb nodes     631  | GNN  time    15.47
+Instance   8 | GNN  nb nodes      21  | GNN  time     3.70
+Instance   9 | GNN  nb nodes      83  | GNN  time     3.08
+Instance  10 | GNN  nb nodes     141  | GNN  time     6.66
+Instance  11 | GNN  nb nodes     336  | GNN  time     8.37
+Instance  12 | GNN  nb nodes    3011  | GNN  time    34.41
+Instance  13 | GNN  nb nodes     147  | GNN  time     8.53
+Instance  14 | GNN  nb nodes     275  | GNN  time     8.00
+Instance  15 | GNN  nb nodes     201  | GNN  time     5.38
+Instance  16 | GNN  nb nodes     702  | GNN  time    15.27
+Instance  17 | GNN  nb nodes     477  | GNN  time    10.56
+Instance  18 | GNN  nb nodes     615  | GNN  time    12.20
+Instance  19 | GNN  nb nodes      53  | GNN  time     4.71
+Instance  20 | GNN  nb nodes     181  | GNN  time     6.18
+Instance  21 | GNN  nb nodes     235  | GNN  time     9.37
+Instance  22 | GNN  nb nodes      87  | GNN  time     5.57
+Instance  23 | GNN  nb nodes     179  | GNN  time     6.64
+Instance  24 | GNN  nb nodes      19  | GNN  time     5.80
+Instance  25 | GNN  nb nodes      87  | GNN  time     5.72
+Instance  26 | GNN  nb nodes     157  | GNN  time     5.71
+Instance  27 | GNN  nb nodes     459  | GNN  time    10.19
+Instance  28 | GNN  nb nodes    1157  | GNN  time    22.60
+Instance  29 | GNN  nb nodes     493  | GNN  time    14.43
+Instance  30 | GNN  nb nodes     614  | GNN  time    10.17
+Instance  31 | GNN  nb nodes      19  | GNN  time     3.19
+Instance  32 | GNN  nb nodes     325  | GNN  time     7.78
+Instance  33 | GNN  nb nodes     214  | GNN  time     7.50
+Instance  34 | GNN  nb nodes      31  | GNN  time     2.60
+Instance  35 | GNN  nb nodes     980  | GNN  time    21.95
+Instance  36 | GNN  nb nodes     599  | GNN  time    10.84
+Instance  37 | GNN  nb nodes     309  | GNN  time     7.20
+Instance  38 | GNN  nb nodes      31  | GNN  time     3.01
+Instance  39 | GNN  nb nodes     563  | GNN  time    10.90
+Instance  40 | GNN  nb nodes      77  | GNN  time     5.52
+Instance  41 | GNN  nb nodes     167  | GNN  time     6.29
+Instance  42 | GNN  nb nodes     375  | GNN  time     7.80
+Instance  43 | GNN  nb nodes     965  | GNN  time    16.40
+Instance  44 | GNN  nb nodes     111  | GNN  time     5.79
+Instance  45 | GNN  nb nodes     819  | GNN  time    17.06
+Instance  46 | GNN  nb nodes     729  | GNN  time    11.60
+Instance  47 | GNN  nb nodes      69  | GNN  time     3.07
+Instance  48 | GNN  nb nodes     348  | GNN  time     7.95
+Instance  49 | GNN  nb nodes      53  | GNN  time     3.32
+Gasse: time:9.668453377259997, node:421.06
+Instance   0 | SCIP  nb nodes    1367  | SCIP  time    20.54
+Instance   1 | SCIP  nb nodes      19  | SCIP  time     8.18
+Instance   2 | SCIP  nb nodes     185  | SCIP  time    14.26
+Instance   3 | SCIP  nb nodes      33  | SCIP  time     7.07
+Instance   4 | SCIP  nb nodes    2066  | SCIP  time    29.91
+Instance   5 | SCIP  nb nodes      95  | SCIP  time    10.12
+Instance   6 | SCIP  nb nodes     479  | SCIP  time    14.62
+Instance   7 | SCIP  nb nodes     827  | SCIP  time    21.26
+Instance   8 | SCIP  nb nodes       1  | SCIP  time     5.72
+Instance   9 | SCIP  nb nodes      33  | SCIP  time     5.30
+Instance  10 | SCIP  nb nodes      27  | SCIP  time    10.52
+Instance  11 | SCIP  nb nodes     209  | SCIP  time     9.68
+Instance  12 | SCIP  nb nodes    5315  | SCIP  time    36.86
+Instance  13 | SCIP  nb nodes      78  | SCIP  time    11.28
+Instance  14 | SCIP  nb nodes     167  | SCIP  time    10.24
+Instance  15 | SCIP  nb nodes      97  | SCIP  time     6.08
+Instance  16 | SCIP  nb nodes    1038  | SCIP  time    18.13
+Instance  17 | SCIP  nb nodes     407  | SCIP  time    12.95
+Instance  18 | SCIP  nb nodes     777  | SCIP  time    14.87
+Instance  19 | SCIP  nb nodes      17  | SCIP  time     5.84
+Instance  20 | SCIP  nb nodes      67  | SCIP  time     7.79
+Instance  21 | SCIP  nb nodes     131  | SCIP  time    12.90
+Instance  22 | SCIP  nb nodes      31  | SCIP  time     5.69
+Instance  23 | SCIP  nb nodes      55  | SCIP  time     9.85
+Instance  24 | SCIP  nb nodes       5  | SCIP  time     6.57
+Instance  25 | SCIP  nb nodes      21  | SCIP  time     6.51
+Instance  26 | SCIP  nb nodes      91  | SCIP  time     8.17
+Instance  27 | SCIP  nb nodes     513  | SCIP  time    14.27
+Instance  28 | SCIP  nb nodes    1259  | SCIP  time    21.04
+Instance  29 | SCIP  nb nodes     509  | SCIP  time    17.98
+Instance  30 | SCIP  nb nodes     544  | SCIP  time    13.18
+Instance  31 | SCIP  nb nodes       3  | SCIP  time     4.41
+Instance  32 | SCIP  nb nodes     293  | SCIP  time     9.43
+Instance  33 | SCIP  nb nodes     159  | SCIP  time    10.60
+Instance  34 | SCIP  nb nodes       3  | SCIP  time     2.92
+Instance  35 | SCIP  nb nodes    1278  | SCIP  time    25.24
+Instance  36 | SCIP  nb nodes     513  | SCIP  time    12.07
+Instance  37 | SCIP  nb nodes     270  | SCIP  time     9.22
+Instance  38 | SCIP  nb nodes       7  | SCIP  time     4.31
+Instance  39 | SCIP  nb nodes     529  | SCIP  time    13.91
+Instance  40 | SCIP  nb nodes      15  | SCIP  time     7.96
+Instance  41 | SCIP  nb nodes      81  | SCIP  time     9.51
+Instance  42 | SCIP  nb nodes     279  | SCIP  time     9.87
+Instance  43 | SCIP  nb nodes     949  | SCIP  time    16.50
+Instance  44 | SCIP  nb nodes      61  | SCIP  time     8.64
+Instance  45 | SCIP  nb nodes     929  | SCIP  time    20.41
+Instance  46 | SCIP  nb nodes     891  | SCIP  time    13.42
+Instance  47 | SCIP  nb nodes       9  | SCIP  time     3.39
+Instance  48 | SCIP  nb nodes     465  | SCIP  time    11.79
+Instance  49 | SCIP  nb nodes       9  | SCIP  time     3.94
+SCIP: time:11.899002100879997, node:464.12
+matrix: time:9.215332905540004, node:415.96
+Gasse: time:9.668453377259997, node:421.06
+SCIP: time:11.899002100879997, node:464.12
+[803.0, 85.0, 316.0, 95.0, 1626.0, 221.0, 494.0, 661.0, 23.0, 72.0, 145.0, 332.0, 2973.0, 154.0, 277.0, 193.0, 694.0, 495.0, 657.0, 53.0, 173.0, 225.0, 87.0, 173.0, 19.0, 79.0, 147.0, 459.0, 1179.0, 507.0, 552.0, 21.0, 352.0, 218.0, 33.0, 1018.0, 577.0, 271.0, 31.0, 551.0, 74.0, 159.0, 391.0, 987.0, 107.0, 883.0, 687.0, 66.0, 356.0, 47.0]
+[817.0, 87.0, 323.0, 89.0, 1879.0, 229.0, 484.0, 631.0, 21.0, 83.0, 141.0, 336.0, 3011.0, 147.0, 275.0, 201.0, 702.0, 477.0, 615.0, 53.0, 181.0, 235.0, 87.0, 179.0, 19.0, 87.0, 157.0, 459.0, 1157.0, 493.0, 614.0, 19.0, 325.0, 214.0, 31.0, 980.0, 599.0, 309.0, 31.0, 563.0, 77.0, 167.0, 375.0, 965.0, 111.0, 819.0, 729.0, 69.0, 348.0, 53.0]
+[1367.0, 19.0, 185.0, 33.0, 2066.0, 95.0, 479.0, 827.0, 1.0, 33.0, 27.0, 209.0, 5315.0, 78.0, 167.0, 97.0, 1038.0, 407.0, 777.0, 17.0, 67.0, 131.0, 31.0, 55.0, 5.0, 21.0, 91.0, 513.0, 1259.0, 509.0, 544.0, 3.0, 293.0, 159.0, 3.0, 1278.0, 513.0, 270.0, 7.0, 529.0, 15.0, 81.0, 279.0, 949.0, 61.0, 929.0, 891.0, 9.0, 465.0, 9.0]
+[15.44269612800001, 4.569910319999999, 8.436549376999997, 4.969924035999999, 29.001461789000047, 6.736969745, 10.770262538999997, 14.920688418000013, 3.786568088, 3.1244303180000013, 6.873497132, 7.828246155000002, 36.56480582700002, 7.066101784999999, 7.143991562000002, 4.5590100950000005, 14.706127136000013, 9.617680309999999, 11.430990094000004, 4.004814133999999, 5.131655607999999, 9.003269582000003, 4.380736242, 6.004475687999999, 4.731060255, 4.407025607999996, 4.430085925999999, 9.320484844999998, 21.002567973000016, 13.561766601, 9.417461802000002, 3.6715473199999993, 7.739608400999999, 6.778704770000006, 2.512264095000001, 19.726278540000024, 11.269959295999996, 6.676468402999999, 3.0462218560000003, 10.679793760000006, 5.210974025000002, 6.357128006, 7.909256233000004, 16.897024100000024, 5.416240773000002, 16.856847791999993, 11.660567237999995, 3.2933145300000004, 8.61326774, 3.5058632810000003]
+[16.59974805099999, 4.829338074, 9.664673348999996, 4.977417947000002, 31.332216023999955, 7.178396212000005, 10.369152378000008, 15.467608052, 3.6961924039999996, 3.0819010820000012, 6.6592707760000005, 8.367930388999996, 34.414308173999956, 8.529320353999992, 7.997231126000003, 5.378900272999999, 15.271484956999995, 10.556239516999998, 12.201079092999995, 4.705715469999999, 6.1765203830000015, 9.369450657999995, 5.568221433999999, 6.643492545999998, 5.797870915999999, 5.7166114760000015, 5.705936989999998, 10.188147627000003, 22.600272700000005, 14.43127584100001, 10.171147417000002, 3.1896127180000002, 7.782304735000001, 7.495875449000001, 2.5969811449999995, 21.950861722999974, 10.839124611000015, 7.199049970999995, 3.0083198540000007, 10.903690163999991, 5.524168885000001, 6.287619120999999, 7.798479824000005, 16.403813587000005, 5.793431083999996, 17.059182439999987, 11.600525569999997, 3.0729928980000016, 7.949352461, 3.3202109330000003]
+[20.54392197, 8.178054624, 14.262356806, 7.073982374, 29.911237068, 10.115609071, 14.624827341, 21.262610106, 5.71695079, 5.295156224, 10.519526851, 9.676673548, 36.864093727, 11.276743506, 10.239094361, 6.082431255, 18.133924992, 12.948110526, 14.873277662, 5.839574841, 7.792698958, 12.897861432, 5.687578685, 9.849320033, 6.571403875, 6.513669774, 8.173484224, 14.272062449, 21.041061714, 17.983260715, 13.178003066, 4.410269574, 9.427678275, 10.595954473, 2.921160231, 25.243658278, 12.067618899, 9.220330174, 4.313637611, 13.910254204, 7.959546099, 9.508606589, 9.869051384, 16.503324571, 8.643130593, 20.414019308, 13.423264821, 3.394179386, 11.787476825, 3.938381181]
