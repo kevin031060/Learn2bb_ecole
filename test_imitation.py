@@ -12,25 +12,39 @@ from mipdataset import *
 from collect_dataset import TreeObservation
 
 DEVICE = Config.DEVICE
+# DEVICE = torch.device("cuda:1")
 
-class SBObservation:
-    def __init__(self):
-        self.strong_branching_function = ecole.observation.StrongBranchingScores()
 
-    def before_reset(self, model):
-        self.strong_branching_function.before_reset(model)
+def get_task(instance="setcover", type=1):
+    if instance == "setcover":
+        if type == 1:
+            n_rows = 500
+        elif type == 2:
+            n_rows = 1000
+        elif type ==3:
+            n_rows = 2000
+        instances = ecole.instance.SetCoverGenerator(n_rows=n_rows, n_cols=1000)
+    elif instance == "auction":
+        if type == 1:
+            instances = ecole.instance.CombinatorialAuctionGenerator(n_items=100, n_bids=500)
+        elif type == 2:
+            instances = ecole.instance.CombinatorialAuctionGenerator(n_items=200, n_bids=1000)
+        elif type ==3:
+            instances = ecole.instance.CombinatorialAuctionGenerator(n_items=300, n_bids=1500)
+    elif instance == "location":
+        if type == 1:
+            n_customers = 100
+        elif type == 2:
+            n_customers = 200
+        elif type == 3:
+            n_customers = 400
+        instances = ecole.instance.CapacitatedFacilityLocationGenerator(n_customers=n_customers, n_facilities=100)
+    elif instance == "indset":
+        instances = ecole.instance.IndependentSetGenerator(n_nodes=type*500)
 
-    def extract(self, model, done):
-        pyscipopt_model = model.as_pyscipopt()
-        if pyscipopt_model.getCurrentNode() is not None:
-            if pyscipopt_model.getCurrentNode().getDepth() == 0:
-                return self.strong_branching_function.extract(model, done)
-            else:
-                return None
-        else:
-            return None
+    return instances
 
-def run_on_instance(policy, n_rows = 500, seed = 23, test_num = 50, is_tree=False):
+def run_on_instance(policy, type = 1, seed = 23, test_num = 50, is_tree=False, instance = "setcover"):
     # scip_parameters = init_params(presolve=False)
     scip_parameters = {'separating/maxrounds': 0, 'presolving/maxrestarts': 0, 'limits/time': 3600}
 
@@ -38,8 +52,7 @@ def run_on_instance(policy, n_rows = 500, seed = 23, test_num = 50, is_tree=Fals
                                       information_function={"nb_nodes": ecole.reward.NNodes().cumsum(),
                                                             "time": ecole.reward.SolvingTime().cumsum()},
                                       scip_params=scip_parameters)
-
-    instances = ecole.instance.SetCoverGenerator(n_rows=n_rows, n_cols=1000, density=0.05)
+    instances = get_task(instance, type)
     instances.seed(seed)
     env.seed(seed)
 
@@ -50,14 +63,7 @@ def run_on_instance(policy, n_rows = 500, seed = 23, test_num = 50, is_tree=Fals
         # Run the GNN brancher
         observation, action_set, _, done, info = env.reset(instance)
         node_obs, tree_obs, pse_score = observation
-        i=0
         while not done:
-            # if i == 0:
-            #     action = action_set[SBscore[action_set].argmax()]
-            #     observation, action_set, _, done, info = env.step(action)
-            #     node_obs, tree_obs, _ = observation
-            #     i += 1
-            #     continue
 
             with torch.no_grad():
                 observation = (torch.from_numpy(node_obs.row_features.astype(np.float32)).to(DEVICE),
@@ -65,13 +71,16 @@ def run_on_instance(policy, n_rows = 500, seed = 23, test_num = 50, is_tree=Fals
                                torch.from_numpy(node_obs.edge_features.indices.astype(np.int64)).to(DEVICE)[1],
                                torch.from_numpy(node_obs.edge_features.values.astype(np.float32)).view(-1, 1).to(DEVICE),
                                torch.from_numpy(node_obs.column_features.astype(np.float32)).to(DEVICE))
+                nb_var = node_obs.column_features.shape[0]
                 atomic_f = tree_obs[0]
-                atomic_f.append(len(action_set)/node_obs.column_features.shape[0])
+                atomic_f.append(len(action_set)/nb_var)
                 pse_scores = torch.FloatTensor([pse_score[j] for j in action_set])
+                vars_changed = [int(var) for var in tree_obs[1] if int(var)<nb_var]
+                branch_history = [int(var) for var in tree_obs[2] if int(var)<nb_var]
                 tree_features = ([torch.FloatTensor(atomic_f).to(DEVICE),
-                                  tree_obs[1], tree_obs[2], pse_scores.to(DEVICE)], )
+                                  vars_changed, branch_history, pse_scores.to(DEVICE)], )
                 others = (torch.from_numpy(action_set.astype(np.int64)).to(DEVICE),
-                          len(action_set))
+                          len(action_set), nb_var)
                 if is_tree:
                     observation = observation + tree_features + others
                     logits = policy(*observation)
@@ -81,7 +90,7 @@ def run_on_instance(policy, n_rows = 500, seed = 23, test_num = 50, is_tree=Fals
                     action = action_set[logits[action_set.astype(np.int64)].argmax()]
 
                 observation, action_set, _, done, info = env.step(action)
-                node_obs, tree_obs, _ = observation
+                node_obs, tree_obs, pse_score = observation
 
         nodes.append(info['nb_nodes'])
         solving_time.append(info['time'])
@@ -89,7 +98,7 @@ def run_on_instance(policy, n_rows = 500, seed = 23, test_num = 50, is_tree=Fals
     return nodes, solving_time
 
 
-def run_on_default_instance(n_rows = 500, seed = 23, test_num = 50):
+def run_on_default_instance(type = 1, seed = 23, test_num = 50, instance = "setcover"):
     # scip_parameters = init_params(presolve=False)
     scip_parameters = {'separating/maxrounds': 0, 'presolving/maxrestarts': 0, 'limits/time': 3600}
 
@@ -98,7 +107,7 @@ def run_on_default_instance(n_rows = 500, seed = 23, test_num = 50):
                                                                           "time": ecole.reward.SolvingTime()},
                                                     scip_params=scip_parameters)
 
-    instances = ecole.instance.SetCoverGenerator(n_rows=n_rows, n_cols=1000, density=0.05)
+    instances = get_task(instance, type)
     instances.seed(seed)
     default_env.seed(seed)
 
@@ -116,7 +125,7 @@ def run_on_default_instance(n_rows = 500, seed = 23, test_num = 50):
     return nodes, solving_time
 
 
-def run_on_SB_instance(n_rows = 500, seed = 23, test_num = 50, is_SB=False):
+def run_on_SB_instance(type = 1, seed = 23, test_num = 50, is_SB=False, instance = "setcover"):
     # scip_parameters = init_params(presolve=False)
     scip_parameters = {'separating/maxrounds': 0, 'presolving/maxrestarts': 0, 'limits/time': 3600}
 
@@ -124,8 +133,7 @@ def run_on_SB_instance(n_rows = 500, seed = 23, test_num = 50, is_SB=False):
                                       information_function={"nb_nodes": ecole.reward.NNodes().cumsum(),
                                                             "time": ecole.reward.SolvingTime().cumsum()},
                                       scip_params=scip_parameters)
-
-    instances = ecole.instance.SetCoverGenerator(n_rows=n_rows, n_cols=1000, density=0.05)
+    instances = get_task(instance, type)
     instances.seed(seed)
     env.seed(seed)
 
@@ -153,50 +161,44 @@ def run_on_SB_instance(n_rows = 500, seed = 23, test_num = 50, is_SB=False):
     return nodes, solving_time
 
 
-def compare_sovling_statistic(n_rows = 500, path1=None, path2=None):
-
-    # n_rows = 2000
+def compare_sovling_statistic(type = 1, path1=None, path2=None, instance="setcover", seed = 556):
 
 
-    # policy = GNNPointerPolicy()
-    # policy = policy.to(DEVICE)
-    # # check_path = "checkpoints/setcover/20210715_2047/para_best_84.pt"
-    # check_path = "checkpoints/setcover/20210716_1700/setcover_best_168.pt"
-    # policy.load_state_dict(torch.load(check_path))
-    #
-    # nodes_p, times_p = run_on_instance(policy, n_rows=n_rows, is_tree=True)
+
+    policy = GNNPolicy4()
+    check_path = path1
+    policy.load_state_dict(torch.load(check_path))
+    policy = policy.to(DEVICE)
+    nodes_m, times_m = run_on_instance(policy, type=type, is_tree=True, instance=instance, seed=seed)
+    print(f"pointer: time:{np.mean(times_m)}, node:{np.mean(nodes_m)}")
 
     policy_base = GNNPolicy()
-    # check_path = "checkpoints/setcover/para_best.pt"
     check_path = "checkpoints/setcover/20210717_0033/setcover_best_99.pt"
-    policy_base = policy_base.to(DEVICE)
+    check_path = path2
     policy_base.load_state_dict(torch.load(check_path))
-
-    policy = GNNPolicy3()
-    # check_path = "checkpoints/setcover/20210713_1516/para_best_73.pt"
-    check_path = "checkpoints/setcover/20210718_0048/setcover_best_295.pt"
-    check_path = "checkpoints/setcover/20210719_1020/setcover_best_39.pt"
-    check_path = path1
-    policy = policy.to(DEVICE)
-    policy.load_state_dict(torch.load(check_path))
-
-    nodes_m, times_m = run_on_instance(policy, n_rows=n_rows, is_tree=True)
-    print(f"matrix: time:{np.mean(times_m)}, node:{np.mean(nodes_m)}")
-
-
-
-    nodes_gnn, times_gnn = run_on_instance(policy_base, n_rows=n_rows)
+    policy_base = policy_base.to(DEVICE)
+    nodes_gnn, times_gnn = run_on_instance(policy_base, type=type, instance=instance, seed=seed)
     print(f"Gasse: time:{np.mean(times_gnn)}, node:{np.mean(nodes_gnn)}")
 
 
-    nodes_scip, times_scip = run_on_default_instance(n_rows=n_rows)
+    nodes_scip, times_scip = run_on_default_instance(type=type, instance=instance, seed=seed)
     print(f"SCIP: time:{np.mean(times_scip)}, node:{np.mean(nodes_scip)}")
+
+
+    nodes_sb, times_sb = run_on_SB_instance(type = type, is_SB=True, instance = instance, seed=seed)
+    print(f"SCIP_sb: time:{np.mean(times_sb)}, node:{np.mean(nodes_sb)}")
+
+    nodes_psb, times_psb = run_on_SB_instance(type = type, is_SB=False, instance = instance, seed=seed)
+    print(f"SCIP_psb: time:{np.mean(times_psb)}, node:{np.mean(nodes_psb)}")
 
 
     # print(f"pointer: time:{np.mean(times_p)}, node:{np.mean(nodes_p)}")
-    print(f"matrix: time:{np.mean(times_m)}, node:{np.mean(nodes_m)}")
+    print(f"pointer: time:{np.mean(times_m)}, node:{np.mean(nodes_m)}")
     print(f"Gasse: time:{np.mean(times_gnn)}, node:{np.mean(nodes_gnn)}")
     print(f"SCIP: time:{np.mean(times_scip)}, node:{np.mean(nodes_scip)}")
+    print(f"SCIP_sb: time:{np.mean(times_sb)}, node:{np.mean(nodes_sb)}")
+    print(f"SCIP_psb: time:{np.mean(times_psb)}, node:{np.mean(nodes_psb)}")
+
     # print(nodes_p)
     print(nodes_m)
     print(nodes_gnn)
@@ -324,21 +326,23 @@ def test_ecole():
         print(info)
 
 
-def test_accuracy(is_tree = True, path1=None):
+def test_accuracy(is_tree = True, path1=None, path2=None, instance="setcover"):
     t1 = time.time()
     batch_size = 16
     val_size = 100
-    sample_path = "samples/setcover_tree/train"
+    sample_path = f"samples/{instance}_tree/train"
     MIPDataset = TreeDataset
 
     if is_tree:
-        policy = GNNPolicy3()
+        policy = GNNPolicy4()
         check_path = "checkpoints/setcover/20210719_1020/setcover_best_39.pt"
         # check_path = "checkpoints/setcover/20210715_2047/para_best_84.pt"
         check_path = path1
     else:
         policy = GNNPolicy()
         check_path = "checkpoints/setcover/20210717_0033/setcover_best_99.pt"
+        check_path = path2
+
     sample_files = [str(path) for path in Path(sample_path).glob('sample_*.pkl')]
 
     valid_files = sample_files[int(0.9*len(sample_files)):]
@@ -356,11 +360,31 @@ def test_accuracy(is_tree = True, path1=None):
     print("Cost time: ", time.time() - t1)
 
 if __name__ == '__main__':
-    # 60
-    check = "checkpoints/setcover/20210719_1020/setcover_best_198.pt"
-    test_accuracy(is_tree=False)
-    test_accuracy(is_tree=True, path1=check)
-    compare_sovling_statistic(n_rows=500, path1=check)
-    compare_sovling_statistic(n_rows=1000, path1=check)
+    # instance="setcover"
+    # # 60
+    # check = "checkpoints/setcover/20210719_1020/setcover_best_60.pt"
+    # check_gnn = "checkpoints/setcover/20210717_0033/setcover_best_99.pt"
+    seed = 556
+    compare_sovling_statistic(type=1,
+                              path1="checkpoints/auction/20210723_2236/auction_best_218.pt",
+                              path2="checkpoints/auction/20210724_0221/auction_best_138.pt", instance="auction", seed=seed)
+    compare_sovling_statistic(type=1,
+                              path1="checkpoints/indset/20210723_2237/indset_best_21.pt",
+                              path2="checkpoints/indset/20210724_0116/indset_best_84.pt", instance="indset", seed=seed)
+
+    compare_sovling_statistic(type=2,
+                              path1="checkpoints/auction/20210723_2236/auction_best_218.pt",
+                              path2="checkpoints/auction/20210724_0221/auction_best_138.pt", instance="auction", seed=seed)
+    compare_sovling_statistic(type=2,
+                              path1="checkpoints/indset/20210723_2237/indset_best_21.pt",
+                              path2="checkpoints/indset/20210724_0116/indset_best_84.pt", instance="indset", seed=seed)
+    compare_sovling_statistic(type=3,
+                              path1="checkpoints/auction/20210723_2236/auction_best_218.pt",
+                              path2="checkpoints/auction/20210724_0221/auction_best_138.pt", instance="auction", seed=seed)
+    compare_sovling_statistic(type=3,
+                              path1="checkpoints/indset/20210723_2237/indset_best_21.pt",
+                              path2="checkpoints/indset/20210724_0116/indset_best_84.pt", instance="indset", seed=seed)
+
+# compare_sovling_statistic(n_rows=1000, path1=check, path2=check_gnn, instance=instance)
     # test_default()
     # test_ecole()

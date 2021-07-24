@@ -10,6 +10,8 @@ from scipy.sparse import coo_matrix
 from config import *
 import math
 import torch.nn as nn
+DEVICE = Config.DEVICE
+# DEVICE = torch.device("cuda:1")
 
 def create_A_np(row, col, data, size_):
     num_row = size_[0]
@@ -348,7 +350,7 @@ class GNNPolicy2(BaseModel):
         self.layer_norm = nn.LayerNorm(emb_size)
 
     def forward(self, constraint_features, edge_indices_0, edge_indices_1, edge_features, variable_features,
-                tree_features=None, candidates=None, nb_candidates=None):
+                tree_features=None, candidates=None, nb_candidates=None, nb_vars=None):
 
         # variable_features = torch.cat((variable_features, tree_features[3].unsqueeze(-1)), -1)
         # embed
@@ -488,7 +490,11 @@ class GNNPolicy4(BaseModel):
         self.conv_v_to_c = BipartiteGraphConvolution(emb_size)
         self.conv_c_to_v = BipartiteGraphConvolution(emb_size)
 
-        self.key_project = nn.Linear(emb_size, emb_size)
+        self.key_project = nn.Linear(emb_size, emb_size, bias=False)
+        self.Q_project = nn.Linear(emb_size, emb_size, bias=False)
+        self.var_chg_project = nn.Linear(emb_size, emb_size)
+        self.history_project = nn.Linear(emb_size, emb_size)
+        self.q_weights = nn.Parameter(torch.ones(3,1))
 
         self.output_module = torch.nn.Sequential(
             torch.nn.Linear(emb_size, emb_size),
@@ -502,9 +508,15 @@ class GNNPolicy4(BaseModel):
             torch.nn.Linear(emb_size, emb_size),
             torch.nn.ReLU(),
         )
+        self.padzero = torch.zeros(1, emb_size).to(DEVICE)
+        # PSEcost EMBEDDING
+        self.pse_embedding = torch.nn.Sequential(
+            PreNormLayer(1),
+            torch.nn.Linear(1, emb_size)
+        )
 
     def forward(self, constraint_features, edge_indices_0, edge_indices_1, edge_features, variable_features,
-                tree_features=None, candidates=None, nb_candidates=None):
+                tree_features=None, candidates=None, nb_candidates=None, nb_vars=None):
         reversed_edge_indices = torch.stack([edge_indices_1, edge_indices_0], dim=0)
         edge_indices = torch.stack([edge_indices_0, edge_indices_1], dim=0)
         # First step: linear embedding layers to a common dimension (64)
@@ -516,13 +528,62 @@ class GNNPolicy4(BaseModel):
         constraint_features = self.conv_v_to_c(variable_features, reversed_edge_indices, edge_features, constraint_features)
         variable_features = self.conv_c_to_v(constraint_features, edge_indices, edge_features, variable_features)
 
-        tree_f = self.atomic_tree_emb(tree_features[0].view(-1, 10))
+        tree_feature, vars_changed, branch_history, pse_scores = tree_features
+
+        if isinstance(nb_vars, int):
+            if len(vars_changed)==0:
+                var_chg_emb = self.padzero
+            elif len(vars_changed)==1:
+                var_chg_emb = self.var_chg_project(variable_features[vars_changed])
+            else:
+                var_chg_emb = self.var_chg_project(
+                    variable_features.index_select(0, torch.LongTensor(vars_changed).to(variable_features.device)).mean(0)).unsqueeze(0)
+            if len(branch_history)==0:
+                branc_history_emb = self.padzero
+            elif len(branch_history)==1:
+                branc_history_emb = self.history_project(variable_features[branch_history])
+            else:
+                branc_history_emb = self.history_project(
+                    variable_features.index_select(0, torch.LongTensor(branch_history).to(variable_features.device)).mean(0)).unsqueeze(0)
+
+        else:
+            var_chg_emb = []
+            branc_history_emb = []
+            nb_vars_indices = nb_vars.cumsum(-1)
+            for i in range(len(nb_vars)):
+                if i==0:
+                    i_s = 0
+                else:
+                    i_s = nb_vars_indices[i-1]
+                i_e = nb_vars_indices[i]
+                vi = variable_features[i_s:i_e]
+
+                if len(vars_changed[i])==0:
+                    var_chg_emb.append(self.padzero)
+                elif len(vars_changed[i])==1:
+                    var_chg_emb.append(self.var_chg_project(vi[vars_changed[i]]))
+                else:
+                    var_chg_emb.append(self.var_chg_project(vi.index_select(0, torch.LongTensor(vars_changed[i]).to(vi.device)).mean(0)).unsqueeze(0))
+
+                if len(branch_history[i])==0:
+                    branc_history_emb.append(self.padzero)
+                elif len(branch_history[i])==1:
+                    branc_history_emb.append(self.history_project(vi[branch_history[i]]))
+                else:
+                    branc_history_emb.append(self.history_project(vi.index_select(0, torch.LongTensor(branch_history[i]).to(vi.device)).mean(0)).unsqueeze(0))
+            var_chg_emb = torch.cat(var_chg_emb, 0)
+            branc_history_emb = torch.cat(branc_history_emb, 0)
+
+        tree_f = self.atomic_tree_emb(tree_feature.view(-1, 10))
+        tree_f = self.q_weights[0]*tree_f + self.q_weights[1]*var_chg_emb + self.q_weights[2]*branc_history_emb
         Q = tree_f.view(1, -1).expand(nb_candidates, -1) if isinstance(nb_candidates, int) else \
             torch.cat([q.view(1, -1).expand(nums, -1) for q, nums in zip(tree_f, nb_candidates)], 0)
         # A final MLP on the variable features
+        Q = self.Q_project(Q)
         K = self.key_project(variable_features[candidates]).squeeze(-1)
+        pse_emb = self.pse_embedding(pse_scores.unsqueeze(-1))
 
-        output = self.output_module(Q + K)
+        output = 10*torch.tanh(self.output_module(Q + K + pse_emb))
 
         return output.squeeze(-1)
 
@@ -577,7 +638,7 @@ class GNNPolicy3(BaseModel):
         )
 
     def forward(self, constraint_features, edge_indices_0, edge_indices_1, edge_features, variable_features,
-                tree_features=None, candidates=None, nb_candidates=None):
+                tree_features=None, candidates=None, nb_candidates=None, nb_vars=None):
         reversed_edge_indices = torch.stack([edge_indices_1, edge_indices_0], dim=0)
         edge_indices = torch.stack([edge_indices_0, edge_indices_1], dim=0)
         # First step: linear embedding layers to a common dimension (64)

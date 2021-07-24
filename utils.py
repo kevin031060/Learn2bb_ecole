@@ -6,11 +6,12 @@ from tensorboard_logger import Logger as TbLogger
 
 
 import os
-def log_values(val_accuracy, val_loss, val_kacc, epoch, log_path, problem):
+def log_values(val_accuracy, val_loss, val_kacc, epoch, log_path, problem, LEARNING_RATE):
 
     with open(os.path.join(log_path, f'{problem}_trace.txt'), 'a+') as f:
         f.writelines(f'epoch: {epoch}, val_accuracy: {val_accuracy}, '
-                     f'val_loss: {val_loss}, kacc: {val_kacc[0]}, {val_kacc[1]}, {val_kacc[2]}' + '\r\n')
+                     f'val_loss: {val_loss}, kacc: {val_kacc[0]}, {val_kacc[1]}, {val_kacc[2]}'
+                     + f' lr{LEARNING_RATE}'+ '\r\n')
     # Log values to tensorboard
     tb_logger = TbLogger(log_path)
     tb_logger.log_value('val_accuracy', val_accuracy, epoch)

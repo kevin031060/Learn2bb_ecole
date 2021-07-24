@@ -89,8 +89,8 @@ class TreeNodeData(BipartiteNodeData):
 
         self.nb_var = len(variable_features)
         self.tree_feature = torch.FloatTensor(tree_state[0])
-        self.vars_changed = [int(var) for var in tree_state[1]]
-        self.branch_history = [int(var) for var in tree_state[2]]
+        self.vars_changed = [int(var) for var in tree_state[1] if int(var)<self.nb_var]
+        self.branch_history = [int(var) for var in tree_state[2] if int(var)<self.nb_var]
         self.pse_scores = pse_scores
 
         # c_ind = np.concatenate([np.where(edge_indices[1]==i.numpy()) for i in candidates],1).squeeze(0)

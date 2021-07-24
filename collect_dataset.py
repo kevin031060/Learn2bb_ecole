@@ -309,7 +309,7 @@ def run(name = "auction"):
     time_limit = 3600
     train_size = 160000
     n_jobs = 16
-    out_dir = f"samples/{name}_tree"
+    out_dir = f"/media/kevin/000B63CD00065E05/samples/{name}_tree"
     rng = np.random.RandomState(seed + 1)
     t1=time.time()
     # collect
@@ -317,5 +317,5 @@ def run(name = "auction"):
     print(time.time()-t1)
 
 if __name__ == '__main__':
+    # run("indset")
     run("location")
-    run("indset")

@@ -14,7 +14,7 @@ from mipdataset import *
 import datetime
 import time
 from mipdataset import TreeDataset
-DEVICE = Config.DEVICE
+DEVICE = torch.device("cuda:1")
 
 def pretrain(model, dataloader, is_tree = False):
     """
@@ -38,12 +38,12 @@ def pretrain(model, dataloader, is_tree = False):
             if is_tree:
                 tree_features = [batch.tree_feature, batch.vars_changed, batch.branch_history, batch.pse_scores]
                 batched_states = (batch.constraint_features, batch.edge_index[0], batch.edge_index[1],
-                                batch.edge_attr, batch.variable_features,
-                                tree_features, batch.candidates, batch.nb_candidates, batch.nb_vars)
+                                  batch.edge_attr, batch.variable_features,
+                                  tree_features, batch.candidates, batch.nb_candidates, batch.nb_vars)
             else:
                 # Compute the logits (i.e. pre-softmax activations) according to the policy on the concatenated graphs
                 batched_states = (batch.constraint_features, batch.edge_index[0], batch.edge_index[1],
-                                batch.edge_attr, batch.variable_features)
+                                  batch.edge_attr, batch.variable_features)
 
             if not model.pre_train(batched_states):
                 break
@@ -157,7 +157,10 @@ def train(problem = "setcover", model_name = "tree"):
         is_tree = True
 
     MIPDataset = TreeDataset
+
     sample_path = f"samples/{problem}_tree/train"
+    if problem == "indset":
+        sample_path = f"/media/kevin/000B63CD00065E05/samples/{problem}_tree/train"
     # different functions
     if model_name == "tree":
         policy = GNNPolicy4()
@@ -180,7 +183,7 @@ def train(problem = "setcover", model_name = "tree"):
     seed = 12311
     rng = np.random.RandomState(seed)
     load_model = None
-    # if model_name == "tree":
+    # if is_tree:
     #     load_model = "checkpoints/auction/20210723_1932/auction_best_110.pt"
     if load_model is not None:
         policy.load_state_dict(torch.load(load_model))
@@ -191,9 +194,6 @@ def train(problem = "setcover", model_name = "tree"):
     sample_files = [str(path) for path in Path(sample_path).glob('sample_*.pkl')]
     train_files = sample_files[:int(0.9*len(sample_files))]
     valid_files = sample_files[int(0.9*len(sample_files)):]
-    if problem=="location":
-        train_files = sample_files[:int(0.8*len(sample_files))]
-        valid_files = sample_files[int(0.8*len(sample_files)):int(0.9*len(sample_files))]
     pretrain_files = [f for i, f in enumerate(sample_files) if i % 20 == 0]
     pretrain_loader = torch_geometric.data.DataLoader(MIPDataset(pretrain_files), batch_size=128, shuffle=False)
     valid_data = MIPDataset(valid_files)
@@ -210,8 +210,6 @@ def train(problem = "setcover", model_name = "tree"):
         best_acc = valid_acc
         best_loss = valid_loss
         plateau_count = 0
-        LEARNING_RATE = 0.2*0.2*0.2*LEARNING_RATE
-
     else:
         epoch = 0
     while epoch<NB_EPOCHS:
@@ -268,21 +266,21 @@ def train(problem = "setcover", model_name = "tree"):
 
 if __name__ == '__main__':
     #
-    # train("setcover", "tree")
-    # train("setcover", "gnn")
-    # train("setcover", "gnnm")
+    train("setcover", "tree")
+    train("setcover", "gnn")
+    train("setcover", "gnnm")
 
     # train("auction", "tree")
     # train("auction", "gnnm")
     # train("auction", "gnn")
-    if True:
-        # train("auction", "tree")
-        # train("auction", "gnn")
-        # train("auction", "gnnm")
+    # if True:
+        # train("indset", "tree")
+        # train("indset", "gnn")
+        #train("auction", "gnnm")
 
-        train("location", "tree")
-        train("location", "gnn")
-        train("location", "gnnm")
+        #train("location", "tree")
+        # train("location", "gnn")
+        # train("location", "gnnm")
         #
         # train("auction", "tree")
         # train("auction", "gnn")
